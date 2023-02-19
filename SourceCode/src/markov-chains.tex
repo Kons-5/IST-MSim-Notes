@@ -1,0 +1,50 @@
+%//==============================--@--==============================//%
+%\vspace{-1em}
+\subsection[4.1 Introdução às Cadeias de Markov e Teorema Básico do Limite]{$\rightarrow$ Introdução às Cadeias de Markov}
+\label{subsec:intro}
+
+Um dos principais objetivos da análise de Cadeias de Markov, é a determinação das probabilidades de encontrar a cadeia em vários estados, em específicos instantes de tempo. Definimos o \textit{state probability vector} (vetor linha) como:
+$$
+    \pmb{\pi}(k) = [\pi_1(k), \pi_2(k), \dots, \pi_N(k)]
+$$
+onde $\pi_j(k) \delequal \mathcal{P}r\{X_k=x_j\}$ no instante $k$, para o espaço de estados $\mathcal{X} = \{x_j\}$, com $j = 1,\dots,N$. E, assim, por associação natural a um sistema dinâmico, a evolução do sistema é dada pela \underline{equação de transição de estados:}
+$$
+    \pmb{\pi}(k+1) = \pmb{\pi}(k)\, \pmb{P} \iff \pmb{\pi}(k+n) = \pmb{\pi}(k)\, \pmb{P}^n\quad n=1,2,\dots
+$$
+em que $\pmb{P}$ é matriz de transição (estocástica) que condensa o comportamento da Cadeia de Markov, de acordo com o(s) acontecimento(s) probabilístico(s).
+\\[6pt]
+\noindent $\rightarrow$ \textbf{\textit{Steady-state analysis:}} Qual é a probabilidade de encontrarmos a Cadeia de Markov no estado $x_j$ \textit{"in the long run"\footnotemark[2]}? 
+$$ \pi_j = \lim_{k\to+\infty} \pi_j(k) $$
+Se $\pi_j$ existir, refere-se como \textit{steady-state}, \textit{equilibrium}, ou \textit{stationary
+state probability}. Se existir para todos os estados, definimos o \textit{stationary state probability vector} $\pmb{\pi}$.
+
+\begin{theo}[\underline{Def.:} Cadeia de Markov regular\cite{Luenberger1979}]{def:regular}
+    Uma Cadeia de Markov diz-se regular, se existir um \underline{inteiro positivo} $m$, tal que: 
+    \vspace{-0.75em}
+    $$ \pmb{P}^m > \pmb{0}. $$
+    \vspace{-2em}
+    \vphantom{1}
+\end{theo}
+
+%\iffalse
+\noindent Com base na definição supramencionada, invocamos o \textit{\textbf{Teorema Básico do Limite para Cadeias de Markov}}\cite{Luenberger1979}, aplicável à Cadeia de Markov objetiva de estudo. \textit{Ergo}, para $k\to+\infty$, $\pmb{P}^k \to \pmb{e}\, \pmb{\pi} \implies \pmb{\pi} = \pmb{\pi}\, \pmb{P} \;\land\; \pmb{\pi}\, \pmb{e} = 1$, em que $\pmb{e} = [1\: 1\: 1\: 1\: 1\: 1\: 1]^T$ e $\pmb{\pi}$ pode ser revisto como vetor próprio da matriz estocástica $\pmb{P}$, associado ao valor próprio $\lambda_0 = 1$ ($\rightarrow$ ``\textit{No other eigenvalue of $\pmb{P}$ has absolute value greater than 1.}''\cite{Luenberger1979}).
+%\fi
+
+\begin{theo}[\underline{Teo.:} Teorema Básico do Limite para Cadeias de Markov\cite{Luenberger1979}]{def:limite-markov}
+    Let $\pmb{P}$ be the transition matrix of a regular Markov chain. Then:
+    \vspace{-0.5em}
+    \begin{enumerate}[leftmargin=1.7em]
+        \item[$\blacktriangle$] There is a unique probability vector $\pmb{p}^T > 0$ such that: $\; \pmb{p}^T\,\pmb{P} = \pmb{p}^T $
+        
+        \item[$\blacktriangle$] For any inittal state $i$ (corresponding to an initial probability vector equal to the $i$th coordinate vector $\pmb{e}_i^T$ the limit vector
+                        \vspace{-0.75em}$$ \pmb{v}^T = \lim_{m\to+\infty} \pmb{e}_i^T\,\pmb{P}^m $$
+        
+        \vspace{-1.25em}
+        \noindent exists and is independent of $i$. Furthermore, $\pmb{v}^T$ is equal to the eigenvector $\pmb{p}^T$.
+
+        \item[$\blacktriangle$] $\lim_{m\to+\infty} \pmb{P}^m = \pmb{\bar{P}}$, where $\pmb{\bar{P}}$ is the $n \times n$ matrix, each of whose rows is equal to $\pmb{p}^T$.
+    \end{enumerate}
+\end{theo}
+
+%//==============================--@--==============================//%
+\footnotetext[2]{``\textit{By "long run" we mean that the system (...) is allowed to operate for a sufficiently long period of time so that the state probabilities can reach some fixed values (...)}.''\cite{Cassandras-Lafortune2008}}

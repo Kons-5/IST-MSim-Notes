@@ -1,0 +1,83 @@
+%//==============================--@--==============================//%
+\label{sec:linearisation}
+
+\noindent A aproximação linear de uma função é o \underline{polinómio de Taylor de primeira ordem} em torno do ponto de interesse. Em sistemas dinâmicos, é um método que permite (\hyperref[def:equilibrium-point]{possivelmente}) aferir a estabilidade local de pontos de equilíbrio de sistemas não lineares.
+
+{
+\mdfsetup{linewidth=2pt}
+
+\begin{mdframed}
+    \noindent Seja $\pmb{\dot{x}} = f(\pmb{x})$, não linear. A equação geral para a linearização de uma função multivariável $f(\pmb{x})$ num ponto $\pmb{p}$ é:
+    \vspace{-0.5em}
+    $$
+        f(\pmb{x}) \approx f(\pmb{p}) + \left.D f\right|_{\pmb{p}} \cdot (\pmb{x} - \pmb{p})
+    $$
+    
+    \noindent onde $\pmb{x}$ é o vetor de variáveis e $\pmb{p}$ o ponto de interesse para a linearização.
+\end{mdframed}
+}
+
+\begin{quote}
+    \noindent ``A good place to start analyzing the nonlinear system 
+    $$
+        \pmb{\dot{x}} = f(\pmb{x}) 
+    $$
+    is to determine its \underline{equilibrium points} and describe its behavior near [this points]. (...) the local behavior of the nonlinear system near a hyperbolic equilibrium point $\pmb{p}$ is qualitatively determined by the behavior of the linear system
+    $$
+        \pmb{\dot{x}} = \pmb{A}\,\pmb{x},
+    $$
+    with the matrix $\pmb{A} = Df(\pmb{p})$, near the origin. 
+    
+    The linear function $\pmb{A}\, \pmb{x} = Df(\pmb{p})\, \pmb{x}$ is called the \textit{linear part} of $f$ at $\pmb{p}$.''\cite{Perko2013}
+\end{quote}
+
+\begin{theo}[\underline{Def.:} Ponto de equilíbrio (ou ponto critico)\cite{Perko2013}]{def:equilibrium-point}\label{def:equilibrium-point}
+    A point $\pmb{p} \in \mathbb{R}^n$ is called an \textit{equilibrium point} or \textit{critical point} of $\pmb{\dot{x}} = f(\pmb{x})$ if $f(\pmb{p}) = 0$. An equilibrium point $\pmb{p}$ is called a \textit{hyperbolic equilibrium point} of $\pmb{\dot{x}} = f(\pmb{x})$ if none of the eigenvalues of the matrix $Df(\pmb{p})$ have zero real part. The linear system $\pmb{\dot{x}} = \pmb{A}\,\pmb{x}$ with the matrix $\pmb{A} = D f(\pmb{p})$ is called the \textit{linearization} of $\pmb{\dot{x}} = f(\pmb{x})$ at $\pmb{p}$.
+\end{theo}
+
+\begin{quote}
+    ``The Hartman-Grobman Theorem is another very important result in the local qualitative theory of ordinary differential equations. The theorem shows that near a hyperbolic equilibrium point $\pmb{p}$, the nonlinear system
+    $$
+        \pmb{\dot{x}} = f(\pmb{x})
+    $$
+    has the same qualitative structure as the linear system
+    $$
+        \pmb{\dot{x}} = \pmb{A}\,\pmb{x}
+    $$    
+    with $\pmb{A} = Df(\pmb{p})$. Throughout this section we shall assume that the equilibrium point \underline{$\pmb{p}$ has been translated to the origin}.''\cite{Perko2013}
+\end{quote}
+
+\begin{theo}[\underline{Definition 1} \cite{Perko2013}]{def:lin-theorem}\label{def:lin-theorem}
+    Two autonomous systems of differential equations such as $\pmb{\dot{x}} = f(\pmb{x})$ and $\pmb{\dot{x}} = \pmb{A}\,\pmb{x}$ are said to be \textit{topologically equivalent} in a neighborhood of the origin or to have the \textit{same qualitative structure near the origin} if there is a homeomorphism $H$ mapping an open set $U$ containing the origin onto an open set $V$ containing the origin which maps trajectories of $\pmb{\dot{x}} = f(\pmb{x})$ in $U$ onto trajectories of $\pmb{\dot{x}} = \pmb{A}\,\pmb{x}$ in $V$ and preserves their orientation by time in the sense that if a trajectory is directed from $\pmb{p_1}$ to $\pmb{p_2}$ in $U$, then its image is directed from $H(\pmb{p_1})$ to $H(\pmb{p_2})$ in $V$. If the homeomorphism $H$ preserves the parameterization by time, then the systems $\pmb{\dot{x}} = f(\pmb{x})$ and $\pmb{\dot{x}} = \pmb{A}\,\pmb{x}$ are said to be \textit{topologically conjugate} in a neighborhood of the origin.
+\end{theo}
+
+\begin{theo}[\underline{Teo.:} Teorema da Linearização (Hartman-Grobman)\cite{Perko2013}]{teo:lin-theorem}\label{teo:lin-theorem}
+     Let $E$ be an open subset of $\mathbb{R}^n$ containing the origin, let $f \in C^1(E)$, and let $\phi_t$ be the flow of the nonlinear system $\pmb{\dot{x}} = f(\pmb{x})$. Suppose that $f(\pmb{p}) = 0$ and that the matrix $\pmb{A} = Df(\pmb{p})$ has no eigenvalue with zero real part. Then there exists a homeomorphism $H$ of an open set $U$ containing the origin onto an open set $V$ containing the origin such that for each $\pmb{p}\in U$, there is an open interval $I_0 \subset \mathbb{R}$ containing zero such that for all $\pmb{p} \in U$ and $t \in I_0$ 
+     $$
+        H \circ \phi_t(\pmb{p}) = e^{\pmb{A}t} H(\pmb{p}); 
+     $$
+     i.e., $H$ maps trajectories of $\pmb{\dot{x}} = f(\pmb{x})$ near the origin onto trajectories of $\pmb{\dot{x}} = \pmb{A}\,\pmb{x}$ near the origin and preserves the parameterization by time.
+\end{theo}
+
+{
+\mdfsetup{linewidth=2pt}
+
+\begin{mdframed}
+    \noindent $\pmb{\rightarrow}$ \textbf{\textit{Procedimentos}:}
+    \begin{itemize}
+        \item[$\blacktriangle$] \hyperref[def:equilibrium-point]{Calcular os pontos de equilíbrio}
+
+        \item[$\blacktriangle$] \hyperref[def:equilibrium-point]{Calcular a Matriz Jacobiana e aferir que pontos de equilíbrio são hiperbólicos}. Invocar o \hyperref[teo:lin-theorem]{Teorema da Linearização} e justificar que lineariza- ções representam qualitativamente o comportamento do sistema não linear na vizinhança dos pontos de equilíbrio respetivos. 
+
+        \item[$\blacktriangle$] Traçar qualitativamente o retrato de fase para os \hyperref[def:equilibrium-point]{pontos de equilíbrio hiperbólicos} (\textit{vide} \hyperref[subsec:phase-plane-analysis]{Phase Plane Analysis}).
+    \end{itemize}
+
+    \noindent $\pmb{\rightarrow}$ \textbf{\textit{Nota}:}
+    
+    \noindent Para matrizes $\pmb{A}$ $[2 \times 2]$, os valores próprios são dados por:
+    $$
+        \lambda_{1,2} = \frac{1}{2}\text{tr}[\pmb{A}] \pm \frac{1}{2}\sqrt{\left(\text{tr}[\pmb{A}] \right)^2 - 4\det[\pmb{A}]}
+    $$
+\end{mdframed}
+}
+%//==============================--@--==============================//%
